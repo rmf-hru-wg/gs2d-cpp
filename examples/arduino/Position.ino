@@ -14,7 +14,7 @@ void setup()
     //  Driver* servo = new RobotisP20<ArduinoSerial>();
     //  Driver* servo = new B3M<ArduinoSerial>();
     //  Driver* servo = new Futaba<ArduinoSerial>();
-  Driver* servo = new KRS<ArduinoSerial>();
+    Driver *servo = new KRS<ArduinoSerial>();
 
     Serial.println("Target Positon");
     servo->writeTargetPosition(1, 90.0);
