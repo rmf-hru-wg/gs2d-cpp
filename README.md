@@ -1,4 +1,4 @@
-## g—p•û–@
+## ä½¿ç”¨æ–¹æ³•
 
 * gs2d_driver.h
 * gs2d_type.h
@@ -11,12 +11,12 @@
 * gs2d_robotis.h
 * gs2d.h
 
-ˆÈã‚Ì10ƒtƒ@ƒCƒ‹‚ğƒ‰ƒCƒuƒ‰ƒŠ‚ÉŠÜ‚ß‚éB
-`gs2d_util_serial_base.h` ‚ÌŒ`®‚É‡‚í‚¹‚½ƒNƒ‰ƒX‚ğ—pˆÓB
+ä»¥ä¸Šã®10ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã«å«ã‚ã‚‹ã€‚
+`gs2d_util_serial_base.h` ã®å½¢å¼ã«åˆã‚ã›ãŸã‚¯ãƒ©ã‚¹ã‚’ç”¨æ„ã€‚
 
-## —˜—p—á
+## åˆ©ç”¨ä¾‹
 
-### ID1‚ÌƒT[ƒ{ƒ‚[ƒ^[‚ğ¶‰E‚É“®‚©‚·
+### ID1ã®ã‚µãƒ¼ãƒœãƒ¢ãƒ¼ã‚¿ãƒ¼ã‚’å·¦å³ã«å‹•ã‹ã™
 ```cpp
 #include <iostream.h>
 #include "gs2d.h"
@@ -28,18 +28,18 @@ int main(void)
 {
     Driver *servo = new RobotisP20<TemplateSerial>();
 
-    // ID1‚Ìƒgƒ‹ƒN‚ğON
+    // ID1ã®ãƒˆãƒ«ã‚¯ã‚’ON
     servo->writeTorqueEnable(id, 1);
 
-    // ID1‚ğ90“x‚ÌˆÊ’u‚ÉˆÚ“®
+    // ID1ã‚’90åº¦ã®ä½ç½®ã«ç§»å‹•
     servo->writeTargetPosition(1, 90.0);
 
-    // ID1‚ğ-90“x‚ÌˆÊ’u‚ÉˆÚ“®
+    // ID1ã‚’-90åº¦ã®ä½ç½®ã«ç§»å‹•
     servo->writeTargetPosition(1, -90.0);
 }
 ```
 
-### ID1‚ÌŒ»İ‰·“x‚Ì“Ç‚İ‚İi“¯Šúj
+### ID1ã®ç¾åœ¨æ¸©åº¦ã®èª­ã¿è¾¼ã¿ï¼ˆåŒæœŸï¼‰
 
 ```cpp
 #include <iostream.h>
@@ -52,13 +52,13 @@ int main(void)
 {
     Driver *servo = new RobotisP20<TemplateSerial>();
 
-    // ID1‚ÌƒT[ƒ{‚Ì‰·“x‚ğ“Ç‚İ‚İ
+    // ID1ã®ã‚µãƒ¼ãƒœã®æ¸©åº¦ã‚’èª­ã¿è¾¼ã¿
     int temperature = servo->readTemperature(1);
     std::cout << temperature << std::endl;
 }
 ```
 
-### ID1‚ÌŒ»İ‰·“x‚Ì“Ç‚İ‚İi”ñ“¯Šúj
+### ID1ã®ç¾åœ¨æ¸©åº¦ã®èª­ã¿è¾¼ã¿ï¼ˆéåŒæœŸï¼‰
 
 ```cpp
 #include <iostream.h>
@@ -76,18 +76,18 @@ int main(void)
 {
     Driver *servo = new RobotisP20<TemplateSerial>();
 
-    // ID1‚ÌƒT[ƒ{‚Ì‰·“x‚ğ“Ç‚İ‚İ
+    // ID1ã®ã‚µãƒ¼ãƒœã®æ¸©åº¦ã‚’èª­ã¿è¾¼ã¿
     servo->readTemperature(1, TemperatureCallback);
 
-    // óM‘Ò‹@
+    // å—ä¿¡å¾…æ©Ÿ
     while(1) servo->listener();
 }
 ```
 
 ## API
 ### Type
-ƒR[ƒ‹ƒoƒbƒNŠÖ”‚Ìˆø”‚Ég‚í‚ê‚é\‘¢‘Ì‚Å‚·B
-‘S‚Ä‚ÌƒR[ƒ‹ƒoƒbƒNŠÖ”‚ª‚±‚ÌŒ^‚Å“ˆê‚³‚ê‚Ä‚¢‚Ü‚·B
+ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°ã®å¼•æ•°ã«ä½¿ã‚ã‚Œã‚‹æ§‹é€ ä½“ã§ã™ã€‚
+å…¨ã¦ã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°ãŒã“ã®å‹ã§çµ±ä¸€ã•ã‚Œã¦ã„ã¾ã™ã€‚
 
 ```cpp
 class CallbackEventArgs
@@ -98,9 +98,9 @@ class CallbackEventArgs
 };
 ```
 
-* ƒƒ“ƒo•Ï”
-  * data : ƒCƒxƒ“ƒg‚ÌŒÅ—Lƒf[ƒ^B‘ã“üæ‚É‚æ‚Á‚Äuint32_tŒ^‚©floatŒ^‚Ç‚¿‚ç‚©‚Å•Ô‚³‚ê‚éB
-  * id : ƒCƒxƒ“ƒg”­¶Œ³ƒT[ƒ{‚ÌID
-  * status : ƒCƒxƒ“ƒg”­¶‚ÌƒGƒ‰[ó‘Ô
+* ãƒ¡ãƒ³ãƒå¤‰æ•°
+  * data : ã‚¤ãƒ™ãƒ³ãƒˆã®å›ºæœ‰ãƒ‡ãƒ¼ã‚¿ã€‚ä»£å…¥å…ˆã«ã‚ˆã£ã¦uint32_tå‹ã‹floatå‹ã©ã¡ã‚‰ã‹ã§è¿”ã•ã‚Œã‚‹ã€‚
+  * id : ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”Ÿå…ƒã‚µãƒ¼ãƒœã®ID
+  * status : ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”Ÿæ™‚ã®ã‚¨ãƒ©ãƒ¼çŠ¶æ…‹
 
 Generic Serial-bus Servo Driver library uses Apache License 2.0.
