@@ -432,7 +432,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return 0; }
 			if (!(readDriveMode(id) && 0x04)) {
-				this->invalidMode(); return 0;
+				notSupport(); return 0;
 				/*
 				* DynamixelのDriveModeレジスタのBit2が1の場合のみ遷移時間指定が可能です。writeDriveModeで変更してください。
 				*
@@ -456,7 +456,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 			if (!(readDriveMode(id) && 0x04)) {
-				this->invalidMode(); return;
+				notSupport(); return;
 				/*
 				* DynamixelのDriveModeレジスタのBit2が1の場合のみ遷移時間指定が可能です。writeDriveModeで変更してください。
 				*
@@ -487,7 +487,7 @@ namespace gs2d
 			if (!checkId(id)) { badInput(); return 0; }
 
 			if (!(readDriveMode(id) && 0x04)) {
-				this->invalidMode(); return 0;
+				notSupport(); return 0;
 				/*
 				* DynamixelのDriveModeレジスタのBit2が1の場合のみ遷移時間指定が可能です。writeDriveModeで変更してください。
 				*
@@ -510,7 +510,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 			if (!(readDriveMode(id) && 0x04)) {
-				this->invalidMode(); return;
+				notSupport(); return;
 				/*
 				* DynamixelのDriveModeレジスタのBit2が1の場合のみ遷移時間指定が可能です。writeDriveModeで変更してください。
 				*
@@ -613,7 +613,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return 0; }
 			if (readDriveMode(id) && 0x04) {
-				this->invalidMode(); return 0;
+				notSupport(); return 0;
 				/*
 				* DynamixelのDriveModeレジスタのBit2が0の場合のみ回転速度の指定が可能です。writeDriveModeで変更してください。
 				*
@@ -636,7 +636,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 			if (readDriveMode(id) && 0x04) {
-				this->invalidMode(); return;
+				notSupport(); return;
 				/*
 				* DynamixelのDriveModeレジスタのBit2が0の場合のみ回転速度の指定が可能です。writeDriveModeで変更してください。
 				*
@@ -724,7 +724,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return 0; }
 			if (readOperatingMode(id) != 3) {
-				this->invalidMode(); return 0;
+				notSupport(); return 0;
 				/*
 				* DynamixelのOperatingModeレジスタが3の時のみ有効です。writeOperatingModeで変更してください。
 				*
@@ -747,7 +747,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 			if (readOperatingMode(id) != 3) {
-				this->invalidMode(); return;
+				notSupport(); return;
 				/*
 				* DynamixelのOperatingModeレジスタが3の時のみ有効です。writeOperatingModeで変更してください。
 				*
@@ -775,7 +775,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return 0; }
 			if (readOperatingMode(id) != 3) {
-				this->invalidMode(); return 0;
+				notSupport(); return 0;
 				/*
 				* DynamixelのOperatingModeレジスタが3の時のみ有効です。writeOperatingModeで変更してください。
 				*
@@ -798,7 +798,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 			if (readOperatingMode(id) != 3) {
-				this->invalidMode(); return;
+				notSupport(); return;
 				/*
 				* DynamixelのOperatingModeレジスタが3の時のみ有効です。writeOperatingModeで変更してください。
 				*
