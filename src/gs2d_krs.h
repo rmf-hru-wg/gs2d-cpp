@@ -257,7 +257,7 @@ namespace gs2d
 		// General
 		uint32_t readMemory(uint8_t id, uint16_t address, uint8_t length, CallbackType callback)
 		{
-			uint8_t command[2] = { (0b10100000 | id), 0x00 };
+			uint8_t command[2] = { (uint8_t)(0b10100000 | id), 0x00 };
 
 			if (!checkId(id)) { badInput(); return 0; }
 
@@ -287,7 +287,7 @@ namespace gs2d
 		// Ping
 		uint16_t ping(uint8_t id, CallbackType callback = 0)
 		{
-			uint8_t command[2] = { (0b10100000 | id), 0x00 };
+			uint8_t command[2] = { (uint8_t)(0b10100000 | id), 0x00 };
 
 			if (!checkId(id)) { badInput(); return 0; }
 
@@ -301,7 +301,7 @@ namespace gs2d
 		// Temperature
 		uint16_t readTemperature(uint8_t id, CallbackType callback = 0)
 		{
-			uint8_t command[2] = { (0b10100000 | id), 0x04 };
+			uint8_t command[2] = { (uint8_t)(0b10100000 | id), 0x04 };
 
 			if (!checkId(id)) { badInput(); return 0; }
 
@@ -311,7 +311,7 @@ namespace gs2d
 		// Current
 		int32_t readCurrent(uint8_t id, CallbackType callback = 0)
 		{
-			uint8_t command[2] = { (0b10100000 | id), 0x03 };
+			uint8_t command[2] = { (uint8_t)(0b10100000 | id), 0x03 };
 
 			if (!checkId(id)) { badInput(); return 0; }
 
@@ -325,7 +325,7 @@ namespace gs2d
 		gFloat readTargetPosition(uint8_t id, CallbackType callback = 0) { notSupport(); return 0; }
 		void writeTargetPosition(uint8_t id, gFloat position)
 		{
-			uint8_t command[3] = { (0b10000000 | id), 0, 0 };
+			uint8_t command[3] = { (uint8_t)(0b10000000 | id), 0, 0 };
 
 			if (position < -135) position = -135;
 			else if (position > 135) position = 135;
@@ -340,7 +340,7 @@ namespace gs2d
 
 		void writeTargetPosition(uint8_t id, gFloat position, gFloat *currentPosition)
 		{
-			uint8_t command[3] = { (0b10000000 | id), 0, 0 };
+			uint8_t command[3] = { (uint8_t)(0b10000000 | id), 0, 0 };
 
 			if (position < -135) position = -135;
 			else if (position > 135) position = 135;
@@ -355,7 +355,7 @@ namespace gs2d
 		// Current Position
 		gFloat readCurrentPosition(uint8_t id, CallbackType callback = 0)
 		{
-			uint8_t command[2] = { (0b10100000 | id), 0x05 };
+			uint8_t command[2] = { (uint8_t)(0b10100000 | id), 0x05 };
 
 			if (!checkId(id)) { badInput(); return 0; }
 
@@ -369,7 +369,7 @@ namespace gs2d
 		// Deadband
 		gFloat readDeadband(uint8_t id, CallbackType callback = 0)
 		{
-			uint8_t command[2]{ 0b10100000 | id, 0x00 };
+			uint8_t command[2]{ (uint8_t)(0b10100000 | id), 0x00 };
 
 			if (!checkId(id)) { badInput(); return 0; }
 
@@ -404,7 +404,7 @@ namespace gs2d
 		// P Gain
 		uint32_t readPGain(uint8_t id, CallbackType callback = 0)
 		{
-			uint8_t command[2] = { (0b10100000 | id), 0x01 };
+			uint8_t command[2] = { (uint8_t)(0b10100000 | id), 0x01 };
 
 			if (!checkId(id)) { badInput(); return 0; }
 
@@ -412,7 +412,7 @@ namespace gs2d
 		}
 		void writePGain(uint8_t id, uint32_t gain)
 		{
-			uint8_t command[3] = { (0b11000000 | id), 1, 0 };
+			uint8_t command[3] = { (uint8_t)(0b11000000 | id), 1, 0 };
 
 			if (!checkId(id)) { badInput(); return; }
 
@@ -439,7 +439,7 @@ namespace gs2d
 		// Speed
 		gFloat readSpeed(uint8_t id, CallbackType callback = 0)
 		{
-			uint8_t command[2] = { (0b10100000 | id), 0x02 };
+			uint8_t command[2] = { (uint8_t)(0b10100000 | id), 0x02 };
 
 			if (!checkId(id)) { badInput(); return 0; }
 
@@ -447,7 +447,7 @@ namespace gs2d
 		}
 		void writeSpeed(uint8_t id, gFloat speed)
 		{
-			uint8_t command[3] = { (0b11000000 | id), 2, 0 };
+			uint8_t command[3] = { (uint8_t)(0b11000000 | id), 2, 0 };
 
 			if (!checkId(id)) { badInput(); return; }
 
@@ -488,7 +488,7 @@ namespace gs2d
 		// Baudrate
 		uint32_t readBaudrate(uint8_t id, CallbackType callback = 0)
 		{
-			uint8_t command[2]{ 0b10100000 | id, 0x00 };
+			uint8_t command[2]{ (uint8_t)(0b10100000 | id), 0x00 };
 
 			if (!checkId(id)) { badInput(); return 0; }
 
@@ -521,7 +521,7 @@ namespace gs2d
 		// CW Limit Position
 		gFloat readLimitCWPosition(uint8_t id, CallbackType callback = 0)
 		{
-			uint8_t command[2]{ 0b10100000 | id, 0x00 };
+			uint8_t command[2]{ (uint8_t)(0b10100000 | id), 0x00 };
 
 			if (!checkId(id)) { badInput(); return 0; }
 
@@ -550,7 +550,7 @@ namespace gs2d
 		// CCW Limit Position
 		gFloat readLimitCCWPosition(uint8_t id, CallbackType callback = 0)
 		{
-			uint8_t command[2]{ 0b10100000 | id, 0x00 };
+			uint8_t command[2]{ (uint8_t)(0b10100000 | id), 0x00 };
 
 			if (!checkId(id)) { badInput(); return 0; }
 
@@ -580,7 +580,7 @@ namespace gs2d
 		uint32_t readLimitTemperature(uint8_t id, CallbackType callback = 0) { notSupport(); return 0; }
 		void writeLimitTemperature(uint8_t id, uint32_t temperature)
 		{
-			uint8_t command[3] = { 0b11000000 | id, 2, 0 };
+			uint8_t command[3] = { (uint8_t)(0b11000000 | id), 2, 0 };
 
 			uint8_t limit = ((100 - temperature) * 1.425 + 30);
 
@@ -596,7 +596,7 @@ namespace gs2d
 		uint32_t readLimitCurrent(uint8_t id, CallbackType callback = 0) { notSupport(); return 0; }
 		void writeLimitCurrent(uint8_t id, uint32_t current)
 		{
-			uint8_t command[3] = { 0b11000000 | id, 3, 0 };
+			uint8_t command[3] = { (uint8_t)(0b11000000 | id), 3, 0 };
 
 			uint8_t limit = current / 100;
 

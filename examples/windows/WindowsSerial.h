@@ -36,7 +36,7 @@ namespace gs2d
 					dcbParam.BaudRate = CBR_115200;
 					dcbParam.ByteSize = 8;
 					dcbParam.StopBits = ONESTOPBIT;
-					dcbParam.Parity = NOPARITY; 
+					dcbParam.Parity = NOPARITY;
 //					dcbParam.Parity = EVENPARITY;
 
 					dcbParam.fDtrControl = DTR_CONTROL_DISABLE;
@@ -83,7 +83,7 @@ namespace gs2d
 			ClearCommError(handler, &error, &status);
 
 			if (status.cbInQue > 0) {
-				if (status.cbInQue > size) num = size;
+				if (status.cbInQue > (unsigned int)size) num = size;
 				else num = status.cbInQue;
 
 				memset(data, 0, size);

@@ -44,8 +44,8 @@ namespace gs2d
 		EventDataType() { intData = 0; floatData = 0; flag = false; }
 		~EventDataType() {}
 
-		explicit operator int32_t(void) { return flag ? floatData : intData; }
-		explicit operator gFloat(void) { return flag ? floatData : intData; }
+		explicit operator int32_t(void) { return flag ? (int32_t)floatData : intData; }
+		explicit operator gFloat(void) { return flag ? floatData : (gFloat)intData; }
 
 		void set(int32_t data) { intData = data; floatData = (gFloat)data; flag = false; }
 		void set(gFloat data) { intData = (int32_t)data; floatData = data; flag = true; }

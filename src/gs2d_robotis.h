@@ -471,7 +471,7 @@ namespace gs2d
 			}
 
 			if (targetTime < 0) targetTime = 0;
-			else if (targetTime > 32.737) targetTime = 32.737;
+			else if (targetTime > (gFloat)32.737) targetTime = (gFloat)32.737;
 
 			targetTime *= 1000.0;
 
@@ -525,7 +525,7 @@ namespace gs2d
 			}
 
 			if (accelTime < 0) accelTime = 0;
-			else if (accelTime > 32.737) accelTime = 32.737;
+			else if (accelTime > (gFloat)32.737) accelTime = (gFloat)32.737;
 
 			accelTime *= 1000.0;
 
@@ -630,7 +630,7 @@ namespace gs2d
 			uint8_t param[6];
 			uint8_t length = generateParameters(Address::PresentVelocity, 4, 2, param);
 
-			return (int32_t)getFunction(id, Instructions::Read, param, length, speedProcess, callback);
+			return (gFloat)getFunction(id, Instructions::Read, param, length, speedProcess, callback);
 		}
 		void writeSpeed(uint8_t id, gFloat speed)
 		{
@@ -936,7 +936,7 @@ namespace gs2d
 			uint32_t* dataList = new uint32_t[count];
 
 			for (uint8_t i = 0; i < count; i++) {
-				dataList[i] = (positionList[i] + 180.0) * 4096.0 / 360.0;
+				dataList[i] = (uint32_t)((positionList[i] + 180.0) * 4096.0 / 360.0);
 			}
 
 			uint8_t* param = new uint8_t[4 + count * 5];
