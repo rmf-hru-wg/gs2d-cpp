@@ -231,6 +231,8 @@ namespace gs2d
 					return eepromBuf[t].data;
 				}
 			}
+
+			return nullptr;
 		}
 
 		// ------------------------------------------------------------------------------------------
@@ -243,7 +245,7 @@ namespace gs2d
 			switch (data)
 			{
 			case 0x0A: return EventDataType((int32_t)(115200));
-			case 0x01: return EventDataType((int32_t)(62000));
+			case 0x01: return EventDataType((int32_t)(625000));
 			case 0x00:return EventDataType((int32_t)(1250000));
 			default: return EventDataType((int32_t)(0));
 			}
