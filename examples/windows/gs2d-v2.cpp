@@ -103,17 +103,17 @@ int main()
     std::cout << "Speed Read : " << servo->readSpeed(id) << std::endl;
 
     // Accel Time
-    std::cout << "Accel Time Write : " << std::endl; servo->writeAccelTime(id, 0.2);
+    std::cout << "Accel Time Write : " << std::endl; servo->writeAccelTime(id, 0.2f);
     std::cout << "Accel Time Read : " << servo->readAccelTime(id) << std::endl;
 
     // Target Time
-    std::cout << "Target Time Write : " << std::endl; servo->writeTargetTime(id, 0.1);
+    std::cout << "Target Time Write : " << std::endl; servo->writeTargetTime(id, 0.1f);
     std::cout << "Target Time Read : " << servo->readTargetTime(id) << std::endl;
 
     // Target Position
-    std::cout << "Target Position Write : " << std::endl; servo->writeTargetPosition(id, 90);
+    std::cout << "Target Position Write : " << std::endl; servo->writeTargetPosition(id, 90.0f);
     Sleep(1000);
-    std::cout << "Target Position Write : " << std::endl; servo->writeTargetPosition(id, -33.3);
+    std::cout << "Target Position Write : " << std::endl; servo->writeTargetPosition(id, -33.3f);
     Sleep(1000);
     std::cout << "Target Position Read : " << servo->readTargetPosition(id) << std::endl;
 

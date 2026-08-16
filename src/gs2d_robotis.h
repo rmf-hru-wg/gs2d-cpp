@@ -412,7 +412,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 
-			offset /= 0.088;
+			offset /= (gFloat)0.088f;
 
 			if (offset > 1044479) offset = 1044479;
 			else if (offset < -1044479) offset = -1044479;
