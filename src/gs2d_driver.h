@@ -33,7 +33,7 @@ namespace gs2d
 		virtual ~Driver() {}
 
 		// System
-		// Multi Thread 
+		// Multi Thread
 		void changeOperatingMode(bool threading) { operatingMode = threading; }
 		virtual void spin(void) = 0;
 

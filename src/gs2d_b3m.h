@@ -212,7 +212,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return 0; }
 
-			uint8_t param[2]{ address, length };
+			uint8_t param[2]{ (uint8_t)address, length };
 
 			return (int32_t)getFunction(id, Instructions::Read, param, 2, 0, callback);
 		}
@@ -251,7 +251,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 
-			uint8_t param[3]{ (torque) ? 0b00 : 0b10, Address::Mode, 1 };
+			uint8_t param[3]{ (torque) ? (uint8_t)0b00 : (uint8_t)0b10, Address::Mode, 1 };
 
 			getFunction(id, Instructions::Write, param, 3, 0, defaultWriteCallback);
 		}
@@ -301,7 +301,7 @@ namespace gs2d
 
 			uint16_t pos = (position * -100);
 
-			uint8_t param[4]{ pos & 0xFF, (pos >> 8) & 0xFF, Address::TargetPosition, 1 };
+			uint8_t param[4]{ (uint8_t)(pos & 0xFF), (uint8_t)((pos >> 8) & 0xFF), Address::TargetPosition, 1 };
 
 			getFunction(id, Instructions::Write, param, 4, 0, defaultWriteCallback);
 		}
@@ -331,7 +331,7 @@ namespace gs2d
 
 			int16_t pos = (offset * -100);
 
-			uint8_t param[4]{ pos & 0xFF, (pos >> 8) & 0xFF, Address::Offset, 1 };
+			uint8_t param[4]{ (uint8_t)(pos & 0xFF), (uint8_t)((pos >> 8) & 0xFF), Address::Offset, 1 };
 
 			getFunction(id, Instructions::Write, param, 4, 0, defaultWriteCallback);
 		}
@@ -351,7 +351,7 @@ namespace gs2d
 
 			uint16_t pos = (deadband * 100);
 
-			uint8_t param[4]{ pos & 0xFF, (pos >> 8) & 0xFF, Address::Deadband, 1 };
+			uint8_t param[4]{ (uint8_t)(pos & 0xFF), (uint8_t)((pos >> 8) & 0xFF), Address::Deadband, 1 };
 
 			getFunction(id, Instructions::Write, param, 4, 0, defaultWriteCallback);
 		}
@@ -371,7 +371,7 @@ namespace gs2d
 
 			uint16_t time = (targetTime * 1000);
 
-			uint8_t param[4]{ time & 0xFF, (time >> 8) & 0xFF, Address::TargetTime, 1 };
+			uint8_t param[4]{ (uint8_t)(time & 0xFF), (uint8_t)((time >> 8) & 0xFF), Address::TargetTime, 1 };
 
 			getFunction(id, Instructions::Write, param, 4, 0, defaultWriteCallback);
 		}
@@ -393,7 +393,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 
-			uint8_t param[6]{ gain & 0xFF, (gain >> 8) & 0xFF, (gain >> 16) & 0xFF, (gain >> 24) & 0xFF, Address::PGain, 1 };
+			uint8_t param[6]{ (uint8_t)(gain & 0xFF), (uint8_t)((gain >> 8) & 0xFF), (uint8_t)((gain >> 16) & 0xFF), (uint8_t)((gain >> 24) & 0xFF), Address::PGain, 1 };
 
 			getFunction(id, Instructions::Write, param, 6, 0, defaultWriteCallback);
 		}
@@ -411,7 +411,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 
-			uint8_t param[6]{ gain & 0xFF, (gain >> 8) & 0xFF, (gain >> 16) & 0xFF, (gain >> 24) & 0xFF, Address::IGain, 1 };
+			uint8_t param[6]{ (uint8_t)(gain & 0xFF), (uint8_t)((gain >> 8) & 0xFF), (uint8_t)((gain >> 16) & 0xFF), (uint8_t)((gain >> 24) & 0xFF), Address::IGain, 1 };
 
 			getFunction(id, Instructions::Write, param, 6, 0, defaultWriteCallback);
 		}
@@ -429,7 +429,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 
-			uint8_t param[6]{ gain & 0xFF, (gain >> 8) & 0xFF, (gain >> 16) & 0xFF, (gain >> 24) & 0xFF, Address::DGain, 1 };
+			uint8_t param[6]{ (uint8_t)(gain & 0xFF), (uint8_t)((gain >> 8) & 0xFF), (uint8_t)((gain >> 16) & 0xFF), (uint8_t)((gain >> 24) & 0xFF), Address::DGain, 1 };
 
 			getFunction(id, Instructions::Write, param, 6, 0, defaultWriteCallback);
 		}
@@ -453,7 +453,7 @@ namespace gs2d
 
 			int speedInt = speed * 100;
 
-			uint8_t param[6]{ speedInt & 0xFF, (speedInt >> 8) & 0xFF, Address::Speed, 1 };
+			uint8_t param[6]{ (uint8_t)(speedInt & 0xFF), (uint8_t)((speedInt >> 8) & 0xFF), Address::Speed, 1 };
 
 			getFunction(id, Instructions::Write, param, 4, 0, defaultWriteCallback);
 		}
@@ -472,7 +472,7 @@ namespace gs2d
 			if (!checkId(id)) { badInput(); return; }
 			if (!checkId(newid)) { badInput(); return; }
 
-			uint8_t param[6]{ newid, Address::Id, 1 };
+			uint8_t param[6]{ (uint8_t)(newid), Address::Id, 1 };
 
 			getFunction(id, Instructions::Write, param, 3, 0, defaultWriteCallback);
 		}
@@ -506,7 +506,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 
-			uint8_t param[6]{ baudrate & 0xFF, (baudrate >> 8) & 0xFF, (baudrate >> 16) & 0xFF, (baudrate >> 24) & 0xFF, Address::Baudrate, 1 };
+			uint8_t param[6]{ (uint8_t)(baudrate & 0xFF), (uint8_t)((baudrate >> 8) & 0xFF), (uint8_t)((baudrate >> 16) & 0xFF), (uint8_t)((baudrate >> 24) & 0xFF), Address::Baudrate, 1 };
 
 			getFunction(id, Instructions::Write, param, 6, 0, defaultWriteCallback);
 		}
@@ -526,7 +526,7 @@ namespace gs2d
 
 			uint16_t limitInt = (-limitPosition * 100.0);
 
-			uint8_t param[4]{ limitInt & 0xFF, (limitInt >> 8) & 0xFF, Address::CWLimit, 1 };
+			uint8_t param[4]{ (uint8_t)(limitInt & 0xFF), (uint8_t)((limitInt >> 8) & 0xFF), Address::CWLimit, 1 };
 
 			getFunction(id, Instructions::Write, param, 4, 0, defaultWriteCallback);
 		}
@@ -546,7 +546,7 @@ namespace gs2d
 
 			uint16_t limitInt = (int16_t)(-limitPosition * 100.0);
 
-			uint8_t param[4]{ limitInt & 0xFF, (limitInt >> 8) & 0xFF, Address::CCWLimit, 1 };
+			uint8_t param[4]{ (uint8_t)(limitInt & 0xFF), (uint8_t)((limitInt >> 8) & 0xFF), Address::CCWLimit, 1 };
 
 			getFunction(id, Instructions::Write, param, 4, 0, defaultWriteCallback);
 		}
@@ -566,7 +566,7 @@ namespace gs2d
 
 			int limitInt = temperature * 100.0;
 
-			uint8_t param[4]{ limitInt & 0xFF, (limitInt >> 8) & 0xFF, Address::TemperatureLimit, 1 };
+			uint8_t param[4]{ (uint8_t)(limitInt & 0xFF), (uint8_t)((limitInt >> 8) & 0xFF), Address::TemperatureLimit, 1 };
 
 			getFunction(id, Instructions::Write, param, 4, 0, defaultWriteCallback);
 		}
@@ -586,7 +586,7 @@ namespace gs2d
 
 			uint16_t limitInt = current;
 
-			uint8_t param[4]{ limitInt & 0xFF, (limitInt >> 8) & 0xFF, Address::CurrentLimit, 1 };
+			uint8_t param[4]{ (uint8_t)(limitInt & 0xFF), (uint8_t)((limitInt >> 8) & 0xFF), Address::CurrentLimit, 1 };
 
 			getFunction(id, Instructions::Write, param, 4, 0, defaultWriteCallback);
 		}
@@ -604,7 +604,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 
-			uint8_t param[3]{ mode, Address::Mode, 1 };
+			uint8_t param[3]{ (uint8_t)(mode), Address::Mode, 1 };
 
 			getFunction(id, Instructions::Write, param, 3, 0, defaultWriteCallback);
 		}

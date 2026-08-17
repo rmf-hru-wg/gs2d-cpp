@@ -1,7 +1,8 @@
 #pragma once
 
-namespace gs2d::util::crc16
-{
+namespace gs2d {
+namespace util {
+namespace crc16 {
 	unsigned short calculate(unsigned char* data, unsigned short length)
 	{
 		unsigned short crc = 0;
@@ -20,3 +21,5 @@ namespace gs2d::util::crc16
 		return crc;
 	}
 }
+}
+} // namespace gs2d::util::crc16

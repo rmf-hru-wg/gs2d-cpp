@@ -412,7 +412,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 
-			offset /= 0.088;
+			offset /= (gFloat)0.088f;
 
 			if (offset > 1044479) offset = 1044479;
 			else if (offset < -1044479) offset = -1044479;
@@ -432,7 +432,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return 0; }
 			if (!(readDriveMode(id) && 0x04)) {
-				this->invalidMode(); return 0;
+				notSupport(); return 0;
 				/*
 				* DynamixelのDriveModeレジスタのBit2が1の場合のみ遷移時間指定が可能です。writeDriveModeで変更してください。
 				*
@@ -456,7 +456,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 			if (!(readDriveMode(id) && 0x04)) {
-				this->invalidMode(); return;
+				notSupport(); return;
 				/*
 				* DynamixelのDriveModeレジスタのBit2が1の場合のみ遷移時間指定が可能です。writeDriveModeで変更してください。
 				*
@@ -471,7 +471,7 @@ namespace gs2d
 			}
 
 			if (targetTime < 0) targetTime = 0;
-			else if (targetTime > 32.737) targetTime = 32.737;
+			else if (targetTime > (gFloat)32.737) targetTime = (gFloat)32.737;
 
 			targetTime *= 1000.0;
 
@@ -487,7 +487,7 @@ namespace gs2d
 			if (!checkId(id)) { badInput(); return 0; }
 
 			if (!(readDriveMode(id) && 0x04)) {
-				this->invalidMode(); return 0;
+				notSupport(); return 0;
 				/*
 				* DynamixelのDriveModeレジスタのBit2が1の場合のみ遷移時間指定が可能です。writeDriveModeで変更してください。
 				*
@@ -510,7 +510,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 			if (!(readDriveMode(id) && 0x04)) {
-				this->invalidMode(); return;
+				notSupport(); return;
 				/*
 				* DynamixelのDriveModeレジスタのBit2が1の場合のみ遷移時間指定が可能です。writeDriveModeで変更してください。
 				*
@@ -525,7 +525,7 @@ namespace gs2d
 			}
 
 			if (accelTime < 0) accelTime = 0;
-			else if (accelTime > 32.737) accelTime = 32.737;
+			else if (accelTime > (gFloat)32.737) accelTime = (gFloat)32.737;
 
 			accelTime *= 1000.0;
 
@@ -613,7 +613,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return 0; }
 			if (readDriveMode(id) && 0x04) {
-				this->invalidMode(); return 0;
+				notSupport(); return 0;
 				/*
 				* DynamixelのDriveModeレジスタのBit2が0の場合のみ回転速度の指定が可能です。writeDriveModeで変更してください。
 				*
@@ -630,13 +630,13 @@ namespace gs2d
 			uint8_t param[6];
 			uint8_t length = generateParameters(Address::PresentVelocity, 4, 2, param);
 
-			return (int32_t)getFunction(id, Instructions::Read, param, length, speedProcess, callback);
+			return (gFloat)getFunction(id, Instructions::Read, param, length, speedProcess, callback);
 		}
 		void writeSpeed(uint8_t id, gFloat speed)
 		{
 			if (!checkId(id)) { badInput(); return; }
 			if (readDriveMode(id) && 0x04) {
-				this->invalidMode(); return;
+				notSupport(); return;
 				/*
 				* DynamixelのDriveModeレジスタのBit2が0の場合のみ回転速度の指定が可能です。writeDriveModeで変更してください。
 				*
@@ -724,7 +724,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return 0; }
 			if (readOperatingMode(id) != 3) {
-				this->invalidMode(); return 0;
+				notSupport(); return 0;
 				/*
 				* DynamixelのOperatingModeレジスタが3の時のみ有効です。writeOperatingModeで変更してください。
 				*
@@ -747,7 +747,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 			if (readOperatingMode(id) != 3) {
-				this->invalidMode(); return;
+				notSupport(); return;
 				/*
 				* DynamixelのOperatingModeレジスタが3の時のみ有効です。writeOperatingModeで変更してください。
 				*
@@ -775,7 +775,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return 0; }
 			if (readOperatingMode(id) != 3) {
-				this->invalidMode(); return 0;
+				notSupport(); return 0;
 				/*
 				* DynamixelのOperatingModeレジスタが3の時のみ有効です。writeOperatingModeで変更してください。
 				*
@@ -798,7 +798,7 @@ namespace gs2d
 		{
 			if (!checkId(id)) { badInput(); return; }
 			if (readOperatingMode(id) != 3) {
-				this->invalidMode(); return;
+				notSupport(); return;
 				/*
 				* DynamixelのOperatingModeレジスタが3の時のみ有効です。writeOperatingModeで変更してください。
 				*
@@ -936,7 +936,7 @@ namespace gs2d
 			uint32_t* dataList = new uint32_t[count];
 
 			for (uint8_t i = 0; i < count; i++) {
-				dataList[i] = (positionList[i] + 180.0) * 4096.0 / 360.0;
+				dataList[i] = (uint32_t)((positionList[i] + 180.0) * 4096.0 / 360.0);
 			}
 
 			uint8_t* param = new uint8_t[4 + count * 5];
