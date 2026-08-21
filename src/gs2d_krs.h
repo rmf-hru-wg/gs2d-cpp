@@ -129,7 +129,7 @@ namespace gs2d
 			{
 			case 0:
 			case 4:	tmp = data[2] + (data[1] << 7); break;
-			case 7: tmp = data[1] & 0x1F; break;
+			case 7: tmp = data[0] & 0x1F; break;
 			case 1:
 				switch (data[1]) {
 				case 0:
