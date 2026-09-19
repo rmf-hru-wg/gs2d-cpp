@@ -129,7 +129,7 @@ namespace gs2d
 			{
 			case 0:
 			case 4:	tmp = data[2] + (data[1] << 7); break;
-			case 7: tmp = id; break;
+			case 7: tmp = data[0] & 0x1F; break;
 			case 1:
 				switch (data[1]) {
 				case 0:
@@ -462,11 +462,11 @@ namespace gs2d
 		}
 
 		// ID
-		uint32_t readID(uint8_t id = 0x1F, CallbackType callback = 0)
+		uint32_t readID(uint8_t id, CallbackType callback = 0)
 		{
-			uint8_t command[4] = { (uint8_t)(0b11100000 | id) , 0, 0, 0 };
+			uint8_t command[4] = { 0xFF, 0, 0, 0 };
 
-			if (!checkId(id) && id != 0x1F) { badInput(); return 0; }
+			if (!checkId(id)) { badInput(); return 0; }
 
 			return (int32_t)getFunction(command, 4, 0, callback);
 		}
