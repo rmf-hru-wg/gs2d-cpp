@@ -21,9 +21,9 @@ namespace gs2d
 		TimeoutError = 0x01,
 		ResponseError = 0x02,
 		ProtocolError = 0x04,
-		NotSupportError = 0x00,
 		BadInputError = 0x08,
-		SystemError = 0x10
+		SystemError = 0x10,
+		NotSupportError = 0x20
 	};
 
 	/* Classes -------------------------------------------------------------------*/
