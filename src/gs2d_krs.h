@@ -298,7 +298,22 @@ namespace gs2d
 
 		// Torque
 		uint8_t readTorqueEnable(uint8_t id, CallbackType callback = 0) { notSupport(); return 0; }
-		void writeTorqueEnable(uint8_t id, uint8_t torque) { notSupport(); }
+		void writeTorqueEnable(uint8_t id, uint8_t torque) { 
+			uint8_t command[3] = { (uint8_t)(0b10000000 | id), 0, 0 };
+
+			if (!checkId(id)) { badInput(); return; }
+			if (torque != 0) { badInput(); return; }
+			
+			getFunction(command, 3, 0, defaultWriteCallback);
+		}
+		void writeTorqueEnable(uint8_t id, uint8_t torque, gFloat *currentPosition) { 
+			uint8_t command[3] = { (uint8_t)(0b10000000 | id), 0, 0 };
+
+			if (!checkId(id)) { badInput(); return; }
+			if (torque != 0) { badInput(); return; }
+			
+			*currentPosition = (gFloat)getFunction(command, 3, positionProcess, 0);
+		}
 
 		// Temperature
 		uint16_t readTemperature(uint8_t id, CallbackType callback = 0)
@@ -329,6 +344,8 @@ namespace gs2d
 		{
 			uint8_t command[3] = { (uint8_t)(0b10000000 | id), 0, 0 };
 
+			if (!checkId(id)) { badInput(); return; }
+
 			if (position < -135) position = -135;
 			else if (position > 135) position = 135;
 
@@ -343,6 +360,8 @@ namespace gs2d
 		void writeTargetPosition(uint8_t id, gFloat position, gFloat *currentPosition)
 		{
 			uint8_t command[3] = { (uint8_t)(0b10000000 | id), 0, 0 };
+
+			if (!checkId(id)) { badInput(); return; }
 
 			if (position < -135) position = -135;
 			else if (position > 135) position = 135;
