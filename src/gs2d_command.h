@@ -65,7 +65,7 @@ namespace gs2d
 		uint64_t startTime = 0;
 
 		//
-		CommandHandler() : isTrafficFree(true), currentCommand() { serialPort.open(); }
+		CommandHandler() : currentCommand(), isTrafficFree(true) { serialPort.open(); }
 		virtual ~CommandHandler() { serialPort.close(); }
 
 		// コマンド追加関数
@@ -145,6 +145,11 @@ namespace gs2d
 					}
 				}
 			}
+		}
+	public:
+		void setTimeout(uint16_t time)
+		{
+			receiveTimeout = time;
 		}
 	};
 }
